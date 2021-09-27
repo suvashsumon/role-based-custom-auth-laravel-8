@@ -44,7 +44,7 @@ class LoginController extends Controller
             }
             else if (Auth::user()->role_id == 3)
             {
-                return redirect('user/home');
+                return redirect('home');
             }
         }
         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');

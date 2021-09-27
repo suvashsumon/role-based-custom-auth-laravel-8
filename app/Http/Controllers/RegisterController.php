@@ -47,6 +47,6 @@ class RegisterController extends Controller
             $req->session()->put('name', $req->name);
         };
 
-        return redirect("user/home");
+        return redirect("home");
     }
 }

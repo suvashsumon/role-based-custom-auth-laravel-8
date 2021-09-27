@@ -37,6 +37,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\adminAuth::class,
+            \App\Http\Middleware\teacherAuth::class,
         ],
 
         'api' => [
@@ -44,6 +46,18 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'userauth' => [
+            \App\Http\Middleware\userAuth::class,
+        ],
+
+        'adminauth' => [
+            \App\Http\Middleware\adminAuth::class,
+        ],
+
+        'teacherauth' => [
+            \App\Http\Middleware\teacherAuth::class,
+        ]
     ];
 
     /**
