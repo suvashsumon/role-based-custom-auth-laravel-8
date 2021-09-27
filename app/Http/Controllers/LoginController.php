@@ -29,7 +29,7 @@ class LoginController extends Controller
         ]);
         $data = $request->input();
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, true)) {
             $request->session()->put('role_id', Auth::user()->role_id);
             $request->session()->put('isLoggedIn', 'true');
             $request->session()->put('email', $data['email']);

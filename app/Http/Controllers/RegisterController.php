@@ -40,15 +40,13 @@ class RegisterController extends Controller
         // $req->session()->put('name', $req->name);
         $credentials = $req->only('email', 'password');
 
-        if (Auth::attempt($credentials))
+        if (Auth::attempt($credentials, true))
         {
             $req->session()->put('role_id', 3);
             $req->session()->put('email', $req->email);
             $req->session()->put('name', $req->name);
         };
 
-        return Auth::user()->role_id;
-
-        //return redirect("user/home");
+        return redirect("user/home");
     }
 }
