@@ -54,9 +54,10 @@ class LoginController extends Controller
 
     public function logout()
     {
-        Session::flush();
-        Auth::logout();
-        return Redirect('login');
+        return "hello world";
+        // Session::flush();
+        // Auth::logout();
+        // return redirect('/login');
 
     }
 }

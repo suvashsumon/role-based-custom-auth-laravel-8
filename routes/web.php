@@ -24,7 +24,7 @@ Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'register']);
 
-Route::get('logout', [LoginController::class, 'logout']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::group(['middleware'=>['userauth']], function(){
     Route::get('/home', function () {

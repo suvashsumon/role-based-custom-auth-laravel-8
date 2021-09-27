@@ -21,9 +21,13 @@ class adminAuth
         {
             return redirect('/login');
         }
-        else if(Auth::user()->role_id != 1)
+        else if(Auth::user()->role_id == 2)
         {
-            return redirect('/login');
+            return redirect('/teacher/home');
+        }
+        else if(Auth::user()->role_id == 3)
+        {
+            return redirect('/home');
         }
         return $next($request);
     }
