@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 class RegisterController extends Controller
@@ -34,10 +35,20 @@ class RegisterController extends Controller
         $user->password = Hash::make($req->password);
         $user->save();
 
-        $req->session()->put('role_id', 3);
-        $req->session()->put('email', $req->email);
-        $req->session()->put('name', $req->name);
+        // $req->session()->put('role_id', 3);
+        // $req->session()->put('email', $req->email);
+        // $req->session()->put('name', $req->name);
+        $credentials = $req->only('email', 'password');
 
-        return redirect("user/home");
+        if (Auth::attempt($credentials))
+        {
+            $req->session()->put('role_id', 3);
+            $req->session()->put('email', $req->email);
+            $req->session()->put('name', $req->name);
+        };
+
+        return Auth::user()->role_id;
+
+        //return redirect("user/home");
     }
 }
